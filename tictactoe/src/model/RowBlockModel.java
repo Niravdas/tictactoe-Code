@@ -1,5 +1,7 @@
 package model;
 
+import exception.AlreadyFilledExcepion;
+
 /**
  * The TicTacToeBlock class represents a given block in the game.
  */
@@ -50,6 +52,10 @@ public class RowBlockModel
     public void setContents(String value) {
 	if (value == null) {
 	    throw new IllegalArgumentException("The value must be non-null.");
+	}
+	if(!"".equals(this.contents)) {
+		isLegalMove = Boolean.FALSE;
+		throw new AlreadyFilledExcepion();
 	}
 	this.contents = value;
     }
